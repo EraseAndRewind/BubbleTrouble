@@ -12,6 +12,7 @@ namespace BubbleTrouble
         public int radius { get; set; }
         public double angle { get; set; }
         
+        
         private double velocityX;
         private double velocityY;
 
@@ -24,8 +25,8 @@ namespace BubbleTrouble
             this.angle = angle;
 
             velocity = 10;
-            velocityX = (double)(Math.Cos(angle) * velocity);
-            velocityY = (double)(Math.Sin(angle) * velocity);
+            velocityX = 10; //(double)(Math.Cos(angle) * velocity);
+            velocityY = 10; //(double)(Math.Sin(angle) * velocity);
         }
 
         override public void Draw(Graphics g)
@@ -55,6 +56,10 @@ namespace BubbleTrouble
                 velocityY = -velocityY;
             }
 
+            Console.WriteLine("current pos:" + currentPosition.X + "," + currentPosition.Y +
+                " nextPosition:", + nextX + "," + nextY );
+            
+            
             this.currentPosition = new Point((int)(currentPosition.X + velocityX),
             (int)(currentPosition.Y + velocityY));
         }

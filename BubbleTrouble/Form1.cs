@@ -27,6 +27,7 @@ namespace BubbleTrouble
             timer = new Timer();
             timer.Interval = 50;
             timer.Tick += new EventHandler(timer_Tick);
+            timer.Start();
             newGame();
             
         }
@@ -38,8 +39,8 @@ namespace BubbleTrouble
             width = this.width;
             height = this.height;
 
-            Point point = new Point(10, 10);
-            objectDoc.spawnBubble(new Bubble(point, 20, Color.Red, 45));
+            Point point = new Point(100, 100);
+            objectDoc.spawnBubble(new Bubble(point, 20, Color.Red, 30));
         }
 
         void timer_Tick(object sender, EventArgs e)
