@@ -53,6 +53,7 @@
     </Compile>
     <Compile Include="Object.cs" />
     <Compile Include="ObjectDoc.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
