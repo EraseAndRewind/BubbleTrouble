@@ -27,6 +27,7 @@ namespace BubbleTrouble
             velocity = 10;
             velocityX = 10; //(double)(Math.Cos(angle) * velocity);
             velocityY = 10; //(double)(Math.Sin(angle) * velocity);
+            Console.WriteLine("new Bubble is called");
         }
 
         override public void Draw(Graphics g)
@@ -44,6 +45,7 @@ namespace BubbleTrouble
 
         public void Move(int left, int top, int width, int height)
         {
+            Console.WriteLine("move bubble is called");
             double nextX = currentPosition.X + velocityX;
             double nextY = currentPosition.Y + velocityY;
 

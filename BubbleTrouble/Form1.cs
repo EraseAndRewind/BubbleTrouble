@@ -36,8 +36,8 @@ namespace BubbleTrouble
         {
             left = 0;
             top = 0;
-            width = this.width;
-            height = this.height;
+            width = this.Width;
+            height = this.Height;
 
             Point point = new Point(100, 100);
             objectDoc.spawnBubble(new Bubble(point, 20, Color.Red, 30));
