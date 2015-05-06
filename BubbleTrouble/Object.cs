@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace BubbleTrouble
 {
     public abstract class Object
-    {
+    {   
         public Point currentPosition { get; set; }
         public Color color { get; set; }
         public bool isColided { get; set; }

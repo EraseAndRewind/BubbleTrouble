@@ -12,9 +12,9 @@ namespace BubbleTrouble
         public int radius { get; set; }
         public double angle { get; set; }
         
-        
         private double velocityX;
         private double velocityY;
+        private bool flag;
 
         public Bubble(Point currentPosition, int radius, Color color, double angle)
         {
@@ -22,18 +22,23 @@ namespace BubbleTrouble
             this.isColided = false;
             this.radius = radius;
             this.color = color;
-            this.angle = angle;
+            this.angle = ConvertToRadians(angle);
 
+            flag = false;   
             velocity = 10;
-            velocityX = 10; //(double)(Math.Cos(angle) * velocity);
-            velocityY = 10; //(double)(Math.Sin(angle) * velocity);
-            Console.WriteLine("new Bubble is called");
+            velocityX = (double)(Math.Cos(this.angle) * velocity);
+            velocityY = (double)(Math.Sin(this.angle) * velocity);
+        }
+
+        public double ConvertToRadians(double angle)
+        {
+            return (Math.PI / 180.0) * angle;
         }
 
         override public void Draw(Graphics g)
         {
             Brush brush = new SolidBrush(this.color);
-            g.FillEllipse(brush, currentPosition.X, currentPosition.Y, radius, radius);
+            g.FillEllipse(brush, currentPosition.X - radius , currentPosition.Y - radius, 2 * radius, 2 * radius);
             brush.Dispose();
         }
 
@@ -42,29 +47,24 @@ namespace BubbleTrouble
 
         }
 
-
         public void Move(int left, int top, int width, int height)
         {
-            Console.WriteLine("move bubble is called");
             double nextX = currentPosition.X + velocityX;
             double nextY = currentPosition.Y + velocityY;
 
-            if(nextX - radius <= left || nextX + radius >= width)
+            if(nextX - radius < left || nextX + radius > width)
             {
                 velocityX = -velocityX;  
             }
-            if (nextY - radius <= top || nextY + radius >= height)
+            if (nextY - radius < top || nextY + radius > height)
             {
                 velocityY = -velocityY;
             }
 
-            Console.WriteLine("current pos:" + currentPosition.X + "," + currentPosition.Y +
-                " nextPosition:", + nextX + "," + nextY );
-            
-            
             this.currentPosition = new Point((int)(currentPosition.X + velocityX),
             (int)(currentPosition.Y + velocityY));
-        }
 
+          }
+            
     }
 }

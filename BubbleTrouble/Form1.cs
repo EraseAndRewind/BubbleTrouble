@@ -29,7 +29,6 @@ namespace BubbleTrouble
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
             newGame();
-            
         }
 
         void newGame()
@@ -40,7 +39,7 @@ namespace BubbleTrouble
             height = this.Height;
 
             Point point = new Point(100, 100);
-            objectDoc.spawnBubble(new Bubble(point, 20, Color.Red, 30));
+            objectDoc.spawnBubble(new Bubble(point, 20, Color.Red, 90));
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -53,6 +52,9 @@ namespace BubbleTrouble
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.Clear(Color.White);
+            Brush brush = new SolidBrush(Color.Black);
+            Pen pen = new Pen(brush);
+            e.Graphics.DrawRectangle(pen, left, top, width, height);
             objectDoc.Draw(e.Graphics);
         }
 
@@ -60,9 +62,6 @@ namespace BubbleTrouble
         {
 
         }
-
-
-
-
+        
     }
 }
