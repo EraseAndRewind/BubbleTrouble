@@ -28,11 +28,16 @@ namespace BubbleTrouble
             velocityY = (double)(Math.Sin(angle) * velocity);
         }
 
-        public void Draw(Graphics g)
+        override public void Draw(Graphics g)
         {
             Brush brush = new SolidBrush(this.color);
             g.FillEllipse(brush, currentPosition.X, currentPosition.Y, radius, radius);
             brush.Dispose();
+        }
+
+        override public void checkCollision()
+        {
+
         }
 
 
