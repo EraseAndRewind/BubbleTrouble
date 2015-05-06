@@ -18,7 +18,7 @@ namespace BubbleTrouble
         private int top;
         private int width;
         private int height;
-            
+        
         public Form1()
         {
             InitializeComponent();
@@ -62,6 +62,6 @@ namespace BubbleTrouble
         {
 
         }
-        
+
     }
 }

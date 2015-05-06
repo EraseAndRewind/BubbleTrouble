@@ -14,8 +14,7 @@ namespace BubbleTrouble
         
         private double velocityX;
         private double velocityY;
-        private bool flag;
-
+        
         public Bubble(Point currentPosition, int radius, Color color, double angle)
         {
             this.currentPosition = currentPosition;
@@ -24,7 +23,6 @@ namespace BubbleTrouble
             this.color = color;
             this.angle = ConvertToRadians(angle);
 
-            flag = false;   
             velocity = 10;
             velocityX = (double)(Math.Cos(this.angle) * velocity);
             velocityY = (double)(Math.Sin(this.angle) * velocity);
@@ -63,8 +61,6 @@ namespace BubbleTrouble
 
             this.currentPosition = new Point((int)(currentPosition.X + velocityX),
             (int)(currentPosition.Y + velocityY));
-
-          }
-            
+        }
     }
 }
