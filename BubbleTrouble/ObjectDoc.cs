@@ -10,9 +10,11 @@ namespace BubbleTrouble
     public class ObjectDoc
     {
         public List<Bubble> bubbles;
+        public List<Player> players;
         public ObjectDoc()
         {
             bubbles = new List<Bubble>();
+            players = new List<Player>();
         }
         public void Draw(Graphics g)
         {
@@ -20,6 +22,16 @@ namespace BubbleTrouble
             {
                 bubble.Draw(g);
             }
+            foreach(Player player in players)
+            {
+                player.Draw(g);
+            }
+        }
+
+        public void createPlayers(Player player)
+        {
+            Console.WriteLine("Player Created");
+            players.Add(player);
         }
 
         public void spawnBubble(Bubble bubble)
@@ -27,13 +39,20 @@ namespace BubbleTrouble
             bubbles.Add(bubble);
         }
 
+       
         public void moveObjects(int left, int top, int width, int height)
         {
             foreach (Bubble bubble in bubbles)
             {
                 bubble.Move(left, top, width, height);
             }
+            foreach (Player p in players)
+            {
+                p.Move(left, width);
+            }
         }
+
+        
 
         public void checkCollision()
         {

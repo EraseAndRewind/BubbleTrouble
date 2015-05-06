@@ -38,8 +38,15 @@ namespace BubbleTrouble
             width = this.Width;
             height = this.Height;
 
+            Point p  = new Point(width /2 , height);
+            Player first = new Player(p, 25, 50);
+            objectDoc.createPlayers(first);
+
+            
             Point point = new Point(100, 100);
             objectDoc.spawnBubble(new Bubble(point, 20, Color.Red, 90));
+
+
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -61,7 +68,25 @@ namespace BubbleTrouble
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
 
+            if (e.KeyCode == Keys.Right)
+                objectDoc.players.First().changeDirection(MovingObject.DIRECTION.STILL);
+            if (e.KeyCode == Keys.Left)
+                objectDoc.players.First().changeDirection(MovingObject.DIRECTION.STILL);
+                
+            Invalidate();
         }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Right)
+                objectDoc.players.First().changeDirection(MovingObject.DIRECTION.RIGHT);
+            if (e.KeyCode == Keys.Left)
+                objectDoc.players.First().changeDirection(MovingObject.DIRECTION.LEFT);
+            Invalidate();
+                
+        }
+
+
 
     }
 }

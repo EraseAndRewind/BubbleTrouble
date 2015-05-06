@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BubbleTrouble
 {
-    public class Bubble : Object
+    public class Bubble : MovingObject
     {
         public int radius { get; set; }
         public double angle { get; set; }
@@ -17,7 +17,7 @@ namespace BubbleTrouble
         
         public Bubble(Point currentPosition, int radius, Color color, double angle)
         {
-            this.currentPosition = currentPosition;
+            this.currentPosition = new Point(currentPosition.X, currentPosition.Y);
             this.isColided = false;
             this.radius = radius;
             this.color = color;
