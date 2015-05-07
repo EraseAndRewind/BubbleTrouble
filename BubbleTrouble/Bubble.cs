@@ -26,7 +26,7 @@ namespace BubbleTrouble
             this.color = color;
             this.angle = angle;
 
-           this.dropRate = 1;
+            this.dropRate = dropRate;
             velocity = VELOCITY;
             velocityX = (double)(Math.Cos(ConvertToRadians(this.angle)) * velocity);
             velocityY = (double)(Math.Sin(ConvertToRadians(this.angle)) * velocity);
@@ -52,9 +52,15 @@ namespace BubbleTrouble
             brush.Dispose();
         }
 
-        override public void checkCollision()
+        public void checkCollision(Bullet bullet)
         {
-            
+            if (currentPosition.X + radius > bullet.currentPosition.X &&
+                currentPosition.X - radius < bullet.currentPosition.X
+            && currentPosition.Y > bullet.endPoint.Y)
+            {
+                isColided = true;
+                bullet.isColided = true;
+            }
         }
 
         public void Move(int left, int top, int width, int height)

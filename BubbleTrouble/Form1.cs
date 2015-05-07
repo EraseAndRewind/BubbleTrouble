@@ -40,14 +40,11 @@ namespace BubbleTrouble
             height = this.Height - REDUCE;
 
             Point p  = new Point(width /2 , height);
-            Player first = new Player(p, 25, 50);
+            Player first = new Player(p);
             objectDoc.createPlayers(first);
 
-            
             Point point = new Point(40, 100);
-            objectDoc.spawnBubble(new Bubble(point, 20, Color.Red, 0, 10));
-
-
+            objectDoc.spawnBubble(new Bubble(point, 20, Color.Red, 0, 1));
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -72,7 +69,7 @@ namespace BubbleTrouble
                 objectDoc.players.First().changeDirection(MovingObject.DIRECTION.STILL);
             else if (e.KeyCode == Keys.Left)
                 objectDoc.players.First().changeDirection(MovingObject.DIRECTION.STILL);
-            
+                
            Invalidate();
         }
 
@@ -86,7 +83,6 @@ namespace BubbleTrouble
                 objectDoc.FireBullet();
                     
             Invalidate();
-                
         }
 
         private void Form1_Load(object sender, EventArgs e)

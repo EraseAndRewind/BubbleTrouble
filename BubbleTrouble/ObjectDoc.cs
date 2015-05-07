@@ -78,15 +78,30 @@ namespace BubbleTrouble
         public void checkCollision()
         {
 
-            for (int i = bullets.Count - 1; i >= 0; i--)
+            for (int j = bubbles.Count - 1; j >= 0; j--)
             {
-                if (bullets[i].isColided)
+                for (int i = bullets.Count - 1; i >= 0; i--)
                 {
-                    bullets.RemoveAt(i);
-                    canFire = true;
+                    bubbles[j].checkCollision(bullets[i]);
+                    if (bullets[i].isColided)
+                    {
+                        bullets.RemoveAt(i);
+                        canFire = true;
+                    }
+
+                    if (bubbles[j].isColided)
+                    {
+                        bubbles.Add(new Bubble(bubbles[j].currentPosition, 20, Color.Red, 0, 1));
+                        bubbles.Add(new Bubble(bubbles[j].currentPosition, 20, Color.Red, 180, -1));
+                        bubbles.RemoveAt(j);
+                    }
+                    
                 }
             }
+            
 
+            
+            
 
             
         }

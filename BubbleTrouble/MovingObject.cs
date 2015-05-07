@@ -21,7 +21,6 @@ namespace BubbleTrouble
         public bool isColided { get; set; }
         public double velocity { get; set; }
         public abstract void Draw(Graphics g);
-        public abstract void checkCollision();
-        
+                
     }
 }

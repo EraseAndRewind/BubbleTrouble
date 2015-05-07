@@ -17,16 +17,15 @@ namespace BubbleTrouble
         private int velocityX;
         private Image img;
         
-       public Player(Point currentPosition, int playerWidht, int playerHeight)
+       public Player(Point currentPosition)
        {
             this.currentPosition = new Point(currentPosition.X, currentPosition.Y);
-            this.playerHeight = playerHeight;
-            this.playerWidht = playerWidht;
+            
             this.velocityX = 10;
             brush = new SolidBrush(Color.Blue);
             direction = DIRECTION.STILL;
             img = Properties.Resources.penguinplayersmallercanavas;
-     }
+      }
         override public void Draw(Graphics g)
         {
             Pen pen = new Pen(brush);
@@ -38,7 +37,7 @@ namespace BubbleTrouble
            
         }
 
-        override public void checkCollision()
+         public void checkCollision()
         {
             
         }

@@ -10,10 +10,8 @@ namespace BubbleTrouble
     public class Bullet : MovingObject
     {
         private Brush brush;
-        private Point endPoint;
+        public Point endPoint;
         
-
-
         public Bullet(Point currentPosition)
         {
             this.currentPosition = new Point(currentPosition.X, currentPosition.Y);
@@ -22,19 +20,17 @@ namespace BubbleTrouble
             isColided = false;
         }
 
-
         public void Move(int distance)
         {
             if (endPoint.Y - distance > 0)
                 endPoint = new Point(currentPosition.X, endPoint.Y - distance);
             else if (!isColided)
             {
-                Console.WriteLine("bullet Should have been deleted");
                 isColided = true;
             }
         }
          
-        public override void checkCollision()
+        public void checkCollision()
         {
             
         }
