@@ -12,11 +12,13 @@ namespace BubbleTrouble
         public List<Bubble> bubbles;
         public List<Player> players;
         public List<Bullet> bullets;
+        public bool canFire;
         public ObjectDoc()
         {
             bubbles = new List<Bubble>();
             players = new List<Player>();
             bullets = new List<Bullet>();
+            canFire = true;
         }
         public void Draw(Graphics g)
         {
@@ -36,9 +38,12 @@ namespace BubbleTrouble
 
         public void FireBullet()
         {
-            Console.WriteLine("Bullet was fired");
-            Bullet bullet = new Bullet(players[0].currentPosition);
-            bullets.Add(bullet);
+            if(canFire)
+            {
+                Bullet bullet = new Bullet(players[0].currentPosition);
+                bullets.Add(bullet);
+                canFire = false;
+            }
         }
 
         public void createPlayers(Player player)
@@ -75,9 +80,10 @@ namespace BubbleTrouble
 
             for (int i = bullets.Count - 1; i >= 0; i--)
             {
-                if (bullets[i].delete)
+                if (bullets[i].isColided)
                 {
                     bullets.RemoveAt(i);
+                    canFire = true;
                 }
             }
         }

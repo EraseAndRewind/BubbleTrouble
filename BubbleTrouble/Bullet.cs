@@ -11,14 +11,15 @@ namespace BubbleTrouble
     {
         private Brush brush;
         private Point endPoint;
-        public bool delete;
+        
+
 
         public Bullet(Point currentPosition)
         {
             this.currentPosition = new Point(currentPosition.X, currentPosition.Y);
             brush = new SolidBrush(Color.Black);
             endPoint = new Point(this.currentPosition.X, this.currentPosition.Y);
-            delete = false; 
+            isColided = false;
         }
 
 
@@ -26,10 +27,10 @@ namespace BubbleTrouble
         {
             if (endPoint.Y - distance > 0)
                 endPoint = new Point(currentPosition.X, endPoint.Y - distance);
-            else if (!delete)
+            else if (!isColided)
             {
                 Console.WriteLine("bullet Should have been deleted");
-                delete = true;
+                isColided = true;
             }
         }
          

@@ -12,6 +12,7 @@ namespace BubbleTrouble
 {
     public partial class Form1 : Form
     {
+        private readonly int REDUCE = 100;
         private ObjectDoc objectDoc;
         private Timer timer;
         private int left;
@@ -25,7 +26,7 @@ namespace BubbleTrouble
             objectDoc = new ObjectDoc();
             this.DoubleBuffered = true;
             timer = new Timer();
-            timer.Interval = 50;
+            timer.Interval = 10;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
             newGame();
@@ -35,16 +36,16 @@ namespace BubbleTrouble
         {
             left = 0;
             top = 0;
-            width = this.Width;
-            height = this.Height;
+            width = this.Width - REDUCE;
+            height = this.Height - REDUCE;
 
             Point p  = new Point(width /2 , height);
             Player first = new Player(p, 25, 50);
             objectDoc.createPlayers(first);
 
             
-            Point point = new Point(100, 100);
-            objectDoc.spawnBubble(new Bubble(point, 20, Color.Red, 90));
+            Point point = new Point(40, 350);
+            objectDoc.spawnBubble(new Bubble(point, 20, Color.Red, 0, 1));
 
 
         }
@@ -86,6 +87,11 @@ namespace BubbleTrouble
                     
             Invalidate();
                 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
 
       

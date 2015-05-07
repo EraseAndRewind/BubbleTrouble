@@ -9,23 +9,35 @@ namespace BubbleTrouble
 {
     public class Bubble : MovingObject
     {
+        private readonly int VELOCITY = 10;
         public int radius { get; set; }
         public double angle { get; set; }
         
         private double velocityX;
         private double velocityY;
-        
-        public Bubble(Point currentPosition, int radius, Color color, double angle)
+        private int dropRate;
+
+        public Bubble(Point currentPosition, int radius, Color color, double angle, int dropRate)
         {
             this.currentPosition = new Point(currentPosition.X, currentPosition.Y);
             this.isColided = false;
             this.radius = radius;
             this.color = color;
-            this.angle = ConvertToRadians(angle);
+            this.angle = angle;
 
-            velocity = 10;
-            velocityX = (double)(Math.Cos(this.angle) * velocity);
-            velocityY = (double)(Math.Sin(this.angle) * velocity);
+
+            this.dropRate = dropRate;
+            velocity = VELOCITY;
+            velocityX = (double)(Math.Cos(ConvertToRadians(this.angle)) * velocity);
+            velocityY = (double)(Math.Sin(ConvertToRadians(this.angle)) * velocity);
+        }
+
+
+        public void evaluateAngle()
+        {
+            velocityX = (double)(Math.Cos(ConvertToRadians(this.angle)) * velocity);
+            velocityY = (double)(Math.Sin(ConvertToRadians(this.angle)) * velocity);
+
         }
 
         public double ConvertToRadians(double angle)
@@ -49,18 +61,34 @@ namespace BubbleTrouble
         {
             double nextX = currentPosition.X + velocityX;
             double nextY = currentPosition.Y + velocityY;
+            
 
-            if(nextX - radius < left || nextX + radius > width)
+
+            if(nextX - radius < left) 
             {
-                velocityX = -velocityX;  
+                angle  += 180;
+                dropRate *= -1;
             }
-            if (nextY - radius < top || nextY + radius > height)
+            else if (nextX + radius > width)
             {
-                velocityY = -velocityY;
+                angle -= 180;
+                dropRate *= -1;
+            }
+            if (nextY - radius < top )
+            {
+                angle *= -1;
+            }
+            else if (nextY + radius > height)
+            {
+                angle *= -1;
+                //dropRate *= -1;
             }
 
+            evaluateAngle();
             this.currentPosition = new Point((int)(currentPosition.X + velocityX),
             (int)(currentPosition.Y + velocityY));
+
+            angle += dropRate;
         }
     }
 }
