@@ -26,7 +26,7 @@ namespace BubbleTrouble
             objectDoc = new ObjectDoc();
             this.DoubleBuffered = true;
             timer = new Timer();
-            timer.Interval = 10;
+            timer.Interval = 1;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
             newGame();
@@ -44,8 +44,8 @@ namespace BubbleTrouble
             objectDoc.createPlayers(first);
 
             
-            Point point = new Point(40, 350);
-            objectDoc.spawnBubble(new Bubble(point, 20, Color.Red, 0, 1));
+            Point point = new Point(40, 100);
+            objectDoc.spawnBubble(new Bubble(point, 20, Color.Red, 0, 10));
 
 
         }

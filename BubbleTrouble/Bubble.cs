@@ -9,13 +9,14 @@ namespace BubbleTrouble
 {
     public class Bubble : MovingObject
     {
-        private readonly int VELOCITY = 10;
+        private readonly int VELOCITY = 5;
         public int radius { get; set; }
         public double angle { get; set; }
         
         private double velocityX;
         private double velocityY;
-        private int dropRate;
+        private double dropRate;
+        
 
         public Bubble(Point currentPosition, int radius, Color color, double angle, int dropRate)
         {
@@ -25,8 +26,7 @@ namespace BubbleTrouble
             this.color = color;
             this.angle = angle;
 
-
-            this.dropRate = dropRate;
+           this.dropRate = 1;
             velocity = VELOCITY;
             velocityX = (double)(Math.Cos(ConvertToRadians(this.angle)) * velocity);
             velocityY = (double)(Math.Sin(ConvertToRadians(this.angle)) * velocity);
@@ -54,7 +54,7 @@ namespace BubbleTrouble
 
         override public void checkCollision()
         {
-
+            
         }
 
         public void Move(int left, int top, int width, int height)
@@ -62,33 +62,38 @@ namespace BubbleTrouble
             double nextX = currentPosition.X + velocityX;
             double nextY = currentPosition.Y + velocityY;
             
-
-
             if(nextX - radius < left) 
-            {
-                angle  += 180;
-                dropRate *= -1;
-            }
-            else if (nextX + radius > width)
             {
                 angle -= 180;
                 dropRate *= -1;
             }
+            else if (nextX + radius > width)
+            {
+                angle += 180;
+                dropRate *= -1;
+            }
             if (nextY - radius < top )
             {
-                angle *= -1;
+                angle -= 180;
             }
             else if (nextY + radius > height)
             {
-                angle *= -1;
-                //dropRate *= -1;
+                Console.WriteLine("my anlge :" + angle);
+                angle += 180;
+            }
+
+            if(Math.Abs(angle) >= 360 )
+            {
+                angle -= 360;
             }
 
             evaluateAngle();
             this.currentPosition = new Point((int)(currentPosition.X + velocityX),
             (int)(currentPosition.Y + velocityY));
 
-            angle += dropRate;
+            if (angle != 90)
+                angle += dropRate;
+           
         }
     }
 }

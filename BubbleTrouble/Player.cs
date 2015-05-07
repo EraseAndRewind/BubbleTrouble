@@ -9,9 +9,6 @@ namespace BubbleTrouble
 {
     public class Player : MovingObject
     {
-
-       
-
         public DIRECTION direction;
 
         private int playerHeight;
@@ -19,10 +16,8 @@ namespace BubbleTrouble
         private Brush brush;
         private int velocityX;
         
-       
-
-        public Player(Point currentPosition, int playerWidht, int playerHeight)
-        {
+       public Player(Point currentPosition, int playerWidht, int playerHeight)
+       {
             this.currentPosition = new Point(currentPosition.X, currentPosition.Y);
             this.playerHeight = playerHeight;
             this.playerWidht = playerWidht;
