@@ -11,10 +11,12 @@ namespace BubbleTrouble
     {
         public List<Bubble> bubbles;
         public List<Player> players;
+        public List<Bullet> bullets;
         public ObjectDoc()
         {
             bubbles = new List<Bubble>();
             players = new List<Player>();
+            bullets = new List<Bullet>();
         }
         public void Draw(Graphics g)
         {
@@ -26,11 +28,21 @@ namespace BubbleTrouble
             {
                 player.Draw(g);
             }
+            foreach (Bullet bullet in bullets)
+            {
+                bullet.Draw(g);
+            }
+        }
+
+        public void FireBullet()
+        {
+            Console.WriteLine("Bullet was fired");
+            Bullet bullet = new Bullet(players[0].currentPosition);
+            bullets.Add(bullet);
         }
 
         public void createPlayers(Player player)
         {
-            Console.WriteLine("Player Created");
             players.Add(player);
         }
 
@@ -39,6 +51,7 @@ namespace BubbleTrouble
             bubbles.Add(bubble);
         }
 
+        
        
         public void moveObjects(int left, int top, int width, int height)
         {
@@ -50,13 +63,23 @@ namespace BubbleTrouble
             {
                 p.Move(left, width);
             }
+            foreach (Bullet bullet in bullets)
+            {
+                bullet.Move(10);
+            }
         }
 
         
-
         public void checkCollision()
         {
 
+            for (int i = bullets.Count - 1; i >= 0; i--)
+            {
+                if (bullets[i].delete)
+                {
+                    bullets.RemoveAt(i);
+                }
+            }
         }
     }
 }

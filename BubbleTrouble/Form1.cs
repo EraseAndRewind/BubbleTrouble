@@ -67,26 +67,28 @@ namespace BubbleTrouble
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-
             if (e.KeyCode == Keys.Right)
                 objectDoc.players.First().changeDirection(MovingObject.DIRECTION.STILL);
-            if (e.KeyCode == Keys.Left)
+            else if (e.KeyCode == Keys.Left)
                 objectDoc.players.First().changeDirection(MovingObject.DIRECTION.STILL);
-                
-            Invalidate();
+            
+           Invalidate();
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Right)
                 objectDoc.players.First().changeDirection(MovingObject.DIRECTION.RIGHT);
-            if (e.KeyCode == Keys.Left)
+            else if (e.KeyCode == Keys.Left)
                 objectDoc.players.First().changeDirection(MovingObject.DIRECTION.LEFT);
+            else if (e.KeyCode == Keys.Up)
+                objectDoc.FireBullet();
+                    
             Invalidate();
                 
         }
 
-
+      
 
     }
 }
