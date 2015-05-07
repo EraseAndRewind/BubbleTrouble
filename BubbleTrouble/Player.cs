@@ -15,6 +15,7 @@ namespace BubbleTrouble
         private int playerWidht;
         private Brush brush;
         private int velocityX;
+        private Image img;
         
        public Player(Point currentPosition, int playerWidht, int playerHeight)
        {
@@ -24,18 +25,18 @@ namespace BubbleTrouble
             this.velocityX = 10;
             brush = new SolidBrush(Color.Blue);
             direction = DIRECTION.STILL;
-            
-        }
+     }
         override public void Draw(Graphics g)
         {
             Pen pen = new Pen(brush);
-            g.DrawRectangle(pen,currentPosition.X - playerWidht , currentPosition.Y - playerWidht * 2
-                , playerWidht, playerHeight);   
+            g.DrawRectangle(pen, currentPosition.X - playerWidht/2, currentPosition.Y - playerHeight, 
+                playerWidht, playerHeight);
+           
         }
 
         override public void checkCollision()
         {
-
+            
         }
 
         public void changeDirection(DIRECTION direction)
@@ -49,14 +50,14 @@ namespace BubbleTrouble
 
             if (direction == DIRECTION.LEFT)
             {
-                if(currentPosition.X - velocityX > 0 )
+                if (currentPosition.X - velocityX - playerWidht / 4 > 0)
                 {
                     currentPosition = new Point(currentPosition.X - velocityX, currentPosition.Y);
                 }
             }
             else if(direction == DIRECTION.RIGHT)
             {
-                if (currentPosition.X + velocityX < widht)
+                if (currentPosition.X + velocityX + playerWidht / 4 < widht)
                 {
                     currentPosition = new Point(currentPosition.X + velocityX, currentPosition.Y);
                 }
