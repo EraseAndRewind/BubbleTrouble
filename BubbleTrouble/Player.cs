@@ -25,12 +25,16 @@ namespace BubbleTrouble
             this.velocityX = 10;
             brush = new SolidBrush(Color.Blue);
             direction = DIRECTION.STILL;
+            img = Properties.Resources.penguinplayersmallercanavas;
      }
         override public void Draw(Graphics g)
         {
             Pen pen = new Pen(brush);
-            g.DrawRectangle(pen, currentPosition.X - playerWidht/2, currentPosition.Y - playerHeight, 
-                playerWidht, playerHeight);
+           // g.DrawRectangle(pen, currentPosition.X - playerWidht/2, currentPosition.Y - playerHeight, 
+           //   playerWidht, playerHeight);
+
+            g.DrawImage(img, currentPosition.X - img.Width / 2, currentPosition.Y - img.Height,
+                img.Width, img.Height);
            
         }
 
@@ -50,14 +54,14 @@ namespace BubbleTrouble
 
             if (direction == DIRECTION.LEFT)
             {
-                if (currentPosition.X - velocityX - playerWidht / 4 > 0)
+                if (currentPosition.X - velocityX - img.Width / 2 > 0)
                 {
                     currentPosition = new Point(currentPosition.X - velocityX, currentPosition.Y);
                 }
             }
             else if(direction == DIRECTION.RIGHT)
             {
-                if (currentPosition.X + velocityX + playerWidht / 4 < widht)
+                if (currentPosition.X + velocityX + img.Height / 4 < widht)
                 {
                     currentPosition = new Point(currentPosition.X + velocityX, currentPosition.Y);
                 }

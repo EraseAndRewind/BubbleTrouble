@@ -86,6 +86,9 @@ namespace BubbleTrouble
                     canFire = true;
                 }
             }
+
+
+            
         }
     }
 }
