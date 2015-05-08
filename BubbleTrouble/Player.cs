@@ -9,35 +9,40 @@ namespace BubbleTrouble
 {
     public class Player : MovingObject
     {
+        public int life;
         public DIRECTION direction;
-
-        private int playerHeight;
-        private int playerWidht;
+        public int playerHeight;
+        public int playerWidht;
         private Brush brush;
         private int velocityX;
         private Image img;
         
-       public Player(Point currentPosition)
+       public Player(Point currentPosition, int life)
        {
             this.currentPosition = new Point(currentPosition.X, currentPosition.Y);
-            
             this.velocityX = 10;
+
+            this.life = life;
             brush = new SolidBrush(Color.Blue);
             direction = DIRECTION.STILL;
             img = Properties.Resources.penguinplayersmallercanavas;
-      }
+            playerHeight = img.Height;
+            playerWidht = img.Width; 
+       }
+       
+       public void RemoveLife()
+       {
+           life--;
+       }
         override public void Draw(Graphics g)
         {
             Pen pen = new Pen(brush);
-           // g.DrawRectangle(pen, currentPosition.X - playerWidht/2, currentPosition.Y - playerHeight, 
-           //   playerWidht, playerHeight);
-
+           
             g.DrawImage(img, currentPosition.X - img.Width / 2, currentPosition.Y - img.Height,
                 img.Width, img.Height);
-           
         }
 
-         public void checkCollision()
+        public void checkCollision()
         {
             
         }
@@ -49,8 +54,6 @@ namespace BubbleTrouble
 
         public void Move(int left, int widht)
         {
-            
-
             if (direction == DIRECTION.LEFT)
             {
                 if (currentPosition.X - velocityX - img.Width / 2 > 0)

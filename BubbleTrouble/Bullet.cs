@@ -12,9 +12,9 @@ namespace BubbleTrouble
         private Brush brush;
         public Point endPoint;
         
-        public Bullet(Point currentPosition)
+        public Bullet(int x, int y)
         {
-            this.currentPosition = new Point(currentPosition.X, currentPosition.Y);
+            this.currentPosition = new Point(x, y);
             brush = new SolidBrush(Color.Black);
             endPoint = new Point(this.currentPosition.X, this.currentPosition.Y);
             isColided = false;

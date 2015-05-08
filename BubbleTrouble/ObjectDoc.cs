@@ -10,26 +10,31 @@ namespace BubbleTrouble
     public class ObjectDoc
     {
         public List<Bubble> bubbles;
-        public List<Player> players;
+        public Player player1;
+        public Player player2;
         public List<Bullet> bullets;
         public bool canFire;
+        public bool restart;
+        public bool gameOver;
+
         public ObjectDoc()
         {
             bubbles = new List<Bubble>();
-            players = new List<Player>();
             bullets = new List<Bullet>();
             canFire = true;
+            restart = false;
+            gameOver = false;
         }
+
         public void Draw(Graphics g)
         {
+            player1.Draw(g);
+
             foreach(Bubble bubble in bubbles)
             {
                 bubble.Draw(g);
             }
-            foreach(Player player in players)
-            {
-                player.Draw(g);
-            }
+
             foreach (Bullet bullet in bullets)
             {
                 bullet.Draw(g);
@@ -40,7 +45,8 @@ namespace BubbleTrouble
         {
             if(canFire)
             {
-                Bullet bullet = new Bullet(players[0].currentPosition);
+                Bullet bullet = new Bullet(player1.currentPosition.X, player1.currentPosition.Y);
+                
                 bullets.Add(bullet);
                 canFire = false;
             }
@@ -48,38 +54,48 @@ namespace BubbleTrouble
 
         public void createPlayers(Player player)
         {
-            players.Add(player);
+            player1 = new Player(player.currentPosition, player.life);
         }
+
+        public void createPlayers(Player player, Player player2)
+        {
+            player1 = new Player(player.currentPosition, player.life);
+        }
+
 
         public void spawnBubble(Bubble bubble)
         {
             bubbles.Add(bubble);
         }
 
-        
-       
         public void moveObjects(int left, int top, int width, int height)
         {
+
+            player1.Move(left, width);
+
             foreach (Bubble bubble in bubbles)
             {
                 bubble.Move(left, top, width, height);
             }
-            foreach (Player p in players)
-            {
-                p.Move(left, width);
-            }
+           
             foreach (Bullet bullet in bullets)
             {
                 bullet.Move(10);
             }
         }
 
-        
         public void checkCollision()
         {
-
             for (int j = bubbles.Count - 1; j >= 0; j--)
             {
+                bubbles[j].checkCollision(player1);
+                if (player1.isColided)
+                {
+                    player1.RemoveLife();
+                    if (player1.life == 0) gameOver = true;
+                    else restart = true;
+                }
+
                 for (int i = bullets.Count - 1; i >= 0; i--)
                 {
                     bubbles[j].checkCollision(bullets[i]);
@@ -95,15 +111,10 @@ namespace BubbleTrouble
                         bubbles.Add(new Bubble(bubbles[j].currentPosition, 20, Color.Red, 180, -1));
                         bubbles.RemoveAt(j);
                     }
-                    
+                   
                 }
             }
-            
-
-            
-            
-
-            
         }
+
     }
 }

@@ -17,7 +17,6 @@ namespace BubbleTrouble
         private double velocityY;
         private double dropRate;
         
-
         public Bubble(Point currentPosition, int radius, Color color, double angle, int dropRate)
         {
             this.currentPosition = new Point(currentPosition.X, currentPosition.Y);
@@ -52,15 +51,39 @@ namespace BubbleTrouble
             brush.Dispose();
         }
 
+        public bool isHit(Rectangle rec)
+        {
+            Console.WriteLine("hit is checked");
+            Rectangle circle = new Rectangle(currentPosition.X - radius, currentPosition.Y - radius, 2 * radius, 2 * radius);
+            if (rec.IntersectsWith(circle)) return true;
+            return false;
+           
+        }
+
+        public void checkCollision(Player p){
+            Console.WriteLine("colision is checked");
+            Rectangle rec = new Rectangle(p.currentPosition.X - p.playerWidht / 2, p.currentPosition.Y - p.playerHeight
+                , p.playerWidht, p.playerHeight);
+
+            if (isHit(rec))
+            {
+                p.isColided = true;
+                Console.WriteLine("Player has colided");
+            }
+        }
+
         public void checkCollision(Bullet bullet)
         {
+            
             if (currentPosition.X + radius > bullet.currentPosition.X &&
-                currentPosition.X - radius < bullet.currentPosition.X
-            && currentPosition.Y > bullet.endPoint.Y)
+                currentPosition.X - radius < bullet.currentPosition.X &&
+                currentPosition.Y > bullet.endPoint.Y)
             {
                 isColided = true;
                 bullet.isColided = true;
             }
+
+         
         }
 
         public void Move(int left, int top, int width, int height)
@@ -84,7 +107,6 @@ namespace BubbleTrouble
             }
             else if (nextY + radius > height)
             {
-                Console.WriteLine("my anlge :" + angle);
                 angle += 180;
             }
 

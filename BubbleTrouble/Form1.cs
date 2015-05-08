@@ -23,24 +23,25 @@ namespace BubbleTrouble
         public Form1()
         {
             InitializeComponent();
-            objectDoc = new ObjectDoc();
+            
             this.DoubleBuffered = true;
             timer = new Timer();
             timer.Interval = 1;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
-            newGame();
+            newGame(5,0);
         }
 
-        void newGame()
+        void newGame(int player1Life, int player2Life)
         {
+            objectDoc = new ObjectDoc();
             left = 0;
             top = 0;
             width = this.Width - REDUCE;
             height = this.Height - REDUCE;
 
             Point p  = new Point(width /2 , height);
-            Player first = new Player(p);
+            Player first = new Player(p, player1Life);
             objectDoc.createPlayers(first);
 
             Point point = new Point(40, 100);
@@ -49,8 +50,17 @@ namespace BubbleTrouble
 
         void timer_Tick(object sender, EventArgs e)
         {
-            objectDoc.moveObjects(left, top, width, height);
+            if (objectDoc.restart)
+            {
+                newGame(objectDoc.player1.life, 0);
+                return;
+            }
+            else if (objectDoc.gameOver)
+            {
+                Form1.ActiveForm.Close();
+            }
             objectDoc.checkCollision();
+            objectDoc.moveObjects(left, top, width, height);
             Invalidate(true);
         }
 
@@ -66,9 +76,9 @@ namespace BubbleTrouble
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Right)
-                objectDoc.players.First().changeDirection(MovingObject.DIRECTION.STILL);
+                objectDoc.player1.changeDirection(MovingObject.DIRECTION.STILL);
             else if (e.KeyCode == Keys.Left)
-                objectDoc.players.First().changeDirection(MovingObject.DIRECTION.STILL);
+                objectDoc.player1.changeDirection(MovingObject.DIRECTION.STILL);
                 
            Invalidate();
         }
@@ -76,9 +86,9 @@ namespace BubbleTrouble
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Right)
-                objectDoc.players.First().changeDirection(MovingObject.DIRECTION.RIGHT);
+                objectDoc.player1.changeDirection(MovingObject.DIRECTION.RIGHT);
             else if (e.KeyCode == Keys.Left)
-                objectDoc.players.First().changeDirection(MovingObject.DIRECTION.LEFT);
+                objectDoc.player1.changeDirection(MovingObject.DIRECTION.LEFT);
             else if (e.KeyCode == Keys.Up)
                 objectDoc.FireBullet();
                     
