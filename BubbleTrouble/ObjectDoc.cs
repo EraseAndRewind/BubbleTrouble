@@ -88,7 +88,10 @@ namespace BubbleTrouble
         {
             for (int j = bubbles.Count - 1; j >= 0; j--)
             {
-                bubbles[j].checkCollision(player1);
+                if (bubbles[j].currentPosition.Y + bubbles[j].radius > player1.currentPosition.Y - player1.playerHeight)
+                {
+                    bubbles[j].checkCollision(player1);
+                }
                 if (player1.isColided)
                 {
                     player1.RemoveLife();
@@ -107,8 +110,8 @@ namespace BubbleTrouble
 
                     if (bubbles[j].isColided)
                     {
-                        bubbles.Add(new Bubble(bubbles[j].currentPosition, 20, Color.Red, 0, 1));
-                        bubbles.Add(new Bubble(bubbles[j].currentPosition, 20, Color.Red, 180, -1));
+                        bubbles.Add(new Bubble(bubbles[j].currentPosition, 20, Color.Red, 270, 1));
+                        bubbles.Add(new Bubble(bubbles[j].currentPosition, 20, Color.Red, 270, -1));
                         bubbles.RemoveAt(j);
                     }
                    
