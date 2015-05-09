@@ -15,7 +15,7 @@ namespace BubbleTrouble
         public int playerWidht;
         private Brush brush;
         private int velocityX;
-        //private Image img;
+        private Image img;
         
        public Player(Point currentPosition, int life)
        {
@@ -25,11 +25,11 @@ namespace BubbleTrouble
             this.life = life;
             brush = new SolidBrush(Color.Blue);
             direction = DIRECTION.STILL;
-            //img = Properties.Resources.penguinplayersmallercanavas;
-            //playerHeight = img.Height;
-            //playerWidht = img.Width; 
-            playerHeight = 50;
-            playerWidht = 25;
+            img = Properties.Resources.penguinplayersmallercanavas1;
+            playerHeight = img.Height;
+            playerWidht = img.Width; 
+            //playerHeight = 50;
+            //playerWidht = 25;
        }
        
        public void RemoveLife()
@@ -40,9 +40,9 @@ namespace BubbleTrouble
         {
             Pen pen = new Pen(brush);
            
-           // g.DrawImage(img, currentPosition.X - img.Width / 2, currentPosition.Y - img.Height,
-              //  img.Width, img.Height);
-            g.DrawRectangle(pen, currentPosition.X - playerWidht / 2, currentPosition.Y - playerHeight, playerWidht, playerHeight);
+            g.DrawImage(img, currentPosition.X - img.Width / 2, currentPosition.Y - img.Height,
+               img.Width, img.Height);
+            //g.DrawRectangle(pen, currentPosition.X - playerWidht / 2, currentPosition.Y - playerHeight, playerWidht, playerHeight);
         }
 
         public void changeDirection(DIRECTION direction)
@@ -54,14 +54,14 @@ namespace BubbleTrouble
         {
             if (direction == DIRECTION.LEFT)
             {
-                if (currentPosition.X - velocityX - playerWidht / 4 > 0)
+                if (currentPosition.X - velocityX - playerWidht / 2 > 0)
                 {
                     currentPosition = new Point(currentPosition.X - velocityX, currentPosition.Y);
                 }
             }
             else if(direction == DIRECTION.RIGHT)
             {
-                if (currentPosition.X + velocityX + playerWidht / 4 < widht)
+                if (currentPosition.X + velocityX + playerWidht / 2 < widht)
                 {
                     currentPosition = new Point(currentPosition.X + velocityX, currentPosition.Y);
                 }

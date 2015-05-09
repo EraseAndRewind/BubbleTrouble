@@ -17,6 +17,8 @@ namespace BubbleTrouble
         public bool restart;
         public bool gameOver;
         public int level;
+        public int timeLeft { get; set; }
+       
         public ObjectDoc(int lvl)
         {
             bubbles = new List<Bubble>();
@@ -120,14 +122,21 @@ namespace BubbleTrouble
                     if (bubbles[j].delete) bubbles.RemoveAt(j);
                     else if (bubbles[j].isColided)
                     {
-                        bubbles.Add(new Bubble(bubbles[j].currentPosition, bubbles[j].radius / 2, bubbles[j].color, 270, bubbles[j].dropRate * 2));
-                        bubbles.Add(new Bubble(bubbles[j].currentPosition, bubbles[j].radius / 2, bubbles[j].color, 270, (bubbles[j].dropRate *= -2)));
+                        double d = Math.Abs(bubbles[j].dropRate);
+                        bubbles.Add(new Bubble(bubbles[j].currentPosition, bubbles[j].radius / 2, bubbles[j].color, 300, d * 2));
+                        bubbles.Add(new Bubble(bubbles[j].currentPosition, bubbles[j].radius / 2, bubbles[j].color, 240, d *= -2));
                         bubbles.RemoveAt(j);
                     }
                    
                 }
             }
             if (player1.isColided)
+            {
+                player1.RemoveLife();
+                if (player1.life == 0) gameOver = true;
+                else restart = true;
+            }
+            if (timeLeft == 0)
             {
                 player1.RemoveLife();
                 if (player1.life == 0) gameOver = true;
