@@ -108,10 +108,11 @@ namespace BubbleTrouble
                         canFire = true;
                     }
 
-                    if (bubbles[j].isColided)
+                    if (bubbles[j].delete) bubbles.RemoveAt(j);
+                else if (bubbles[j].isColided)
                     {
-                        bubbles.Add(new Bubble(bubbles[j].currentPosition, 20, Color.Red, 270, 1));
-                        bubbles.Add(new Bubble(bubbles[j].currentPosition, 20, Color.Red, 270, -1));
+                        bubbles.Add(new Bubble(bubbles[j].currentPosition, bubbles[j].radius / 2, Color.Red, 270, bubbles[j].dropRate + 1));
+                        bubbles.Add(new Bubble(bubbles[j].currentPosition, bubbles[j].radius / 2, Color.Red, 270, -(bubbles[j].dropRate + 1)));
                         bubbles.RemoveAt(j);
                     }
                    

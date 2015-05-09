@@ -16,6 +16,7 @@ namespace BubbleTrouble
             STILL
         }
 
+       
         public Point currentPosition { get; set; }
         public Color color { get; set; }
         public bool isColided { get; set; }

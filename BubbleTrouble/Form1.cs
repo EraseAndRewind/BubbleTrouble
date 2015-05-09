@@ -45,7 +45,11 @@ namespace BubbleTrouble
             objectDoc.createPlayers(first);
 
             Point point = new Point(40, 100);
-            objectDoc.spawnBubble(new Bubble(point, 20, Color.Red, 0, 1));
+            objectDoc.spawnBubble(new Bubble(point, 40, Color.Red, 0, 1));
+            point = new Point(200, 100);
+            objectDoc.spawnBubble(new Bubble(point, 20, Color.Red, 0, 2));
+            point = new Point(400, 100);
+            objectDoc.spawnBubble(new Bubble(point, 10, Color.Red, 0, 3));
         }
 
         void timer_Tick(object sender, EventArgs e)

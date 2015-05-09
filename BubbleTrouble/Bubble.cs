@@ -9,15 +9,18 @@ namespace BubbleTrouble
 {
     public class Bubble : MovingObject
     {
-        private readonly int VELOCITY = 5;
+        private readonly int VELOCITY = 4;
+        
         public int radius { get; set; }
         public double angle { get; set; }
         
         private double velocityX;
         private double velocityY;
-        private double dropRate;
+        public double dropRate { get; set; }
+        public bool delete;
+
         
-        public Bubble(Point currentPosition, int radius, Color color, double angle, int dropRate)
+        public Bubble(Point currentPosition, int radius, Color color, double angle, double dropRate)
         {
             this.currentPosition = new Point(currentPosition.X, currentPosition.Y);
             this.isColided = false;
@@ -29,6 +32,7 @@ namespace BubbleTrouble
             velocity = VELOCITY;
             velocityX = (double)(Math.Cos(ConvertToRadians(this.angle)) * velocity);
             velocityY = (double)(Math.Sin(ConvertToRadians(this.angle)) * velocity);
+            delete = false;
         }
 
 
@@ -65,6 +69,7 @@ namespace BubbleTrouble
                 currentPosition.Y > bullet.endPoint.Y)
             {
                 isColided = true;
+                if (radius == 10) delete = true;
                 bullet.isColided = true;
             }
 
@@ -90,7 +95,7 @@ namespace BubbleTrouble
             }
             if (nextY - radius < top )
             {
-                angle = 90;
+                delete = true;
                 //angle -= 180;
             }
             else if (nextY + radius > height)
