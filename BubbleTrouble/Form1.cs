@@ -40,7 +40,7 @@ namespace BubbleTrouble
             top = 0;
             width = this.Width - REDUCE;
             height = this.Height - REDUCE;
-
+            
             Point p  = new Point(width /2 , height);
             Player first = new Player(p, player1Life);
             objectDoc.createPlayers(first);
@@ -54,7 +54,6 @@ namespace BubbleTrouble
             {
                 Point point = new Point(400, 300);
                 objectDoc.spawnBubble(new Bubble(point, 40, Color.Red, 0, 0.5));
-               
             }
             else if (objectDoc.level == 2)
             {
