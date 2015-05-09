@@ -16,14 +16,16 @@ namespace BubbleTrouble
         public bool canFire;
         public bool restart;
         public bool gameOver;
-
-        public ObjectDoc()
+        public int level;
+        public ObjectDoc(int lvl)
         {
             bubbles = new List<Bubble>();
             bullets = new List<Bullet>();
             canFire = true;
             restart = false;
             gameOver = false;
+            level = lvl;
+            
         }
 
         public void Draw(Graphics g)
@@ -86,18 +88,25 @@ namespace BubbleTrouble
 
         public void checkCollision()
         {
+            if (bubbles.Count == 0)
+            {
+                restart = true;
+                level++;
+                return;
+            }
             for (int j = bubbles.Count - 1; j >= 0; j--)
             {
+                if (bubbles[j].delete) 
+                {
+                    bubbles.RemoveAt(j);
+                    break;
+                }
+
                 if (bubbles[j].currentPosition.Y + bubbles[j].radius > player1.currentPosition.Y - player1.playerHeight)
                 {
                     bubbles[j].checkCollision(player1);
                 }
-                if (player1.isColided)
-                {
-                    player1.RemoveLife();
-                    if (player1.life == 0) gameOver = true;
-                    else restart = true;
-                }
+                
 
                 for (int i = bullets.Count - 1; i >= 0; i--)
                 {
@@ -109,14 +118,20 @@ namespace BubbleTrouble
                     }
 
                     if (bubbles[j].delete) bubbles.RemoveAt(j);
-                else if (bubbles[j].isColided)
+                    else if (bubbles[j].isColided)
                     {
-                        bubbles.Add(new Bubble(bubbles[j].currentPosition, bubbles[j].radius / 2, Color.Red, 270, bubbles[j].dropRate + 1));
-                        bubbles.Add(new Bubble(bubbles[j].currentPosition, bubbles[j].radius / 2, Color.Red, 270, -(bubbles[j].dropRate + 1)));
+                        bubbles.Add(new Bubble(bubbles[j].currentPosition, bubbles[j].radius / 2, bubbles[j].color, 270, bubbles[j].dropRate * 2));
+                        bubbles.Add(new Bubble(bubbles[j].currentPosition, bubbles[j].radius / 2, bubbles[j].color, 270, (bubbles[j].dropRate *= -2)));
                         bubbles.RemoveAt(j);
                     }
                    
                 }
+            }
+            if (player1.isColided)
+            {
+                player1.RemoveLife();
+                if (player1.life == 0) gameOver = true;
+                else restart = true;
             }
         }
 

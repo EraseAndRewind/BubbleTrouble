@@ -29,12 +29,13 @@ namespace BubbleTrouble
             timer.Interval = 1;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
-            newGame(5,0);
-        }
+            newGame(3,0,1);
 
-        void newGame(int player1Life, int player2Life)
+         }
+
+        void newGame(int player1Life, int player2Life, int level)
         {
-            objectDoc = new ObjectDoc();
+            objectDoc = new ObjectDoc(level);
             left = 0;
             top = 0;
             width = this.Width - REDUCE;
@@ -44,24 +45,46 @@ namespace BubbleTrouble
             Player first = new Player(p, player1Life);
             objectDoc.createPlayers(first);
 
-            Point point = new Point(40, 100);
-            objectDoc.spawnBubble(new Bubble(point, 40, Color.Red, 0, 1));
-            point = new Point(200, 100);
-            objectDoc.spawnBubble(new Bubble(point, 20, Color.Red, 0, 2));
-            point = new Point(400, 100);
-            objectDoc.spawnBubble(new Bubble(point, 10, Color.Red, 0, 3));
+            createObjects();
+         }
+
+        void createObjects()
+        {
+            if(objectDoc.level == 1)
+            {
+                Point point = new Point(400, 300);
+                objectDoc.spawnBubble(new Bubble(point, 40, Color.Red, 0, 0.5));
+               
+            }
+            else if (objectDoc.level == 2)
+            {
+                Point point = new Point(400, 300);
+                objectDoc.spawnBubble(new Bubble(point, 40, Color.Red, 0, 0.5));
+                point = new Point(200, 300);
+                objectDoc.spawnBubble(new Bubble(point, 40, Color.Purple, 180, -0.5));
+            }
+            else if (objectDoc.level == 3)
+            {
+                Point point = new Point(500, 300);
+                objectDoc.spawnBubble(new Bubble(point, 40, Color.Red, 0, 0.5));
+                point = new Point(100, 300);
+                objectDoc.spawnBubble(new Bubble(point, 40, Color.Purple, 180, -0.5));
+                point = new Point(300, 300);
+                objectDoc.spawnBubble(new Bubble(point, 40, Color.Yellow, 0, 0.5));
+            }
         }
 
         void timer_Tick(object sender, EventArgs e)
         {
+            Console.WriteLine(objectDoc.player1.life);
             if (objectDoc.restart)
             {
-                newGame(objectDoc.player1.life, 0);
+                newGame(objectDoc.player1.life, 0, objectDoc.level);
                 return;
             }
             else if (objectDoc.gameOver)
             {
-                Form1.ActiveForm.Close();
+                timer.Stop();
             }
             objectDoc.checkCollision();
             objectDoc.moveObjects(left, top, width, height);

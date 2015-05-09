@@ -20,16 +20,16 @@ namespace BubbleTrouble
        public Player(Point currentPosition, int life)
        {
             this.currentPosition = new Point(currentPosition.X, currentPosition.Y);
-            this.velocityX = 10;
-
+            this.velocityX = 5;
+            
             this.life = life;
             brush = new SolidBrush(Color.Blue);
             direction = DIRECTION.STILL;
             //img = Properties.Resources.penguinplayersmallercanavas;
             //playerHeight = img.Height;
-           // playerWidht = img.Width; 
+            //playerWidht = img.Width; 
             playerHeight = 50;
-            playerWidht =25;
+            playerWidht = 25;
        }
        
        public void RemoveLife()
@@ -45,11 +45,6 @@ namespace BubbleTrouble
             g.DrawRectangle(pen, currentPosition.X - playerWidht / 2, currentPosition.Y - playerHeight, playerWidht, playerHeight);
         }
 
-        public void checkCollision()
-        {
-            
-        }
-
         public void changeDirection(DIRECTION direction)
         {
             this.direction = direction;
@@ -59,14 +54,14 @@ namespace BubbleTrouble
         {
             if (direction == DIRECTION.LEFT)
             {
-                if (currentPosition.X - velocityX - playerWidht / 2 > 0)
+                if (currentPosition.X - velocityX - playerWidht / 4 > 0)
                 {
                     currentPosition = new Point(currentPosition.X - velocityX, currentPosition.Y);
                 }
             }
             else if(direction == DIRECTION.RIGHT)
             {
-                if (currentPosition.X + velocityX + playerHeight / 4 < widht)
+                if (currentPosition.X + velocityX + playerWidht / 4 < widht)
                 {
                     currentPosition = new Point(currentPosition.X + velocityX, currentPosition.Y);
                 }

@@ -13,7 +13,6 @@ namespace BubbleTrouble
         
         public int radius { get; set; }
         public double angle { get; set; }
-        
         private double velocityX;
         private double velocityY;
         public double dropRate { get; set; }
@@ -55,11 +54,11 @@ namespace BubbleTrouble
             brush.Dispose();
         }
 
-            public void checkCollision(Player p){
-                if (currentPosition.X + radius > p.currentPosition.X - p.playerWidht
-                    && currentPosition.X - radius < p.currentPosition.X + p.playerWidht)
-                    p.isColided = true;
-            }
+        public void checkCollision(Player p){
+                if (currentPosition.X + radius > p.currentPosition.X - p.playerWidht/2
+                    && currentPosition.X - radius < p.currentPosition.X + p.playerWidht/2)
+            p.isColided = true;
+        }
 
         public void checkCollision(Bullet bullet)
         {

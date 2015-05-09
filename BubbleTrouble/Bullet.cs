@@ -30,11 +30,6 @@ namespace BubbleTrouble
             }
         }
          
-        public void checkCollision()
-        {
-            
-        }
-
         public override void Draw(System.Drawing.Graphics g)
         {
             Pen pen = new Pen(brush);
