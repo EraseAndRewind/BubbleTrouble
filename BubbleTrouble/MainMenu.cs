@@ -4,13 +4,16 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Windows.Forms;
 
 namespace BubbleTrouble
 {
+
     public partial class MainMenu : Form
     {
+        SoundPlayer simpleSound;
         public MainMenu()
         {
             InitializeComponent();
@@ -26,6 +29,8 @@ namespace BubbleTrouble
             button1.ForeColor = System.Drawing.Color.LightCyan;
             button2.ForeColor = System.Drawing.Color.LightCyan;
             button3.ForeColor = System.Drawing.Color.LightCyan;
+            simpleSound = new SoundPlayer(Properties.Resources.theme_song);
+            simpleSound.Play();
         }
 
     
@@ -33,21 +38,55 @@ namespace BubbleTrouble
         private void button1_Click(object sender, EventArgs e)
         {
             Program.OpenDetailFormOnClose = true;
+            simpleSound.Stop();
             this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Program.OpenSelectChar = true;
+            simpleSound.Stop();
             this.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
+            simpleSound.Stop();
             this.Close();
            
         }
+
+        private void button1_MouseHover(object sender, EventArgs e)
+        {
+            button1.ForeColor = System.Drawing.Color.Orange;
+        }
+
+        private void button2_MouseHover(object sender, EventArgs e)
+        {
+            button2.ForeColor = System.Drawing.Color.Orange;
+        }
+
+        private void button3_MouseHover(object sender, EventArgs e)
+        {
+            button3.ForeColor = System.Drawing.Color.Orange;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.ForeColor = System.Drawing.Color.LightCyan;
+        }
+
+        private void button2_MouseLeave(object sender, EventArgs e)
+        {
+            button2.ForeColor = System.Drawing.Color.LightCyan;
+        }
+
+        private void button3_MouseLeave(object sender, EventArgs e)
+        {
+            button3.ForeColor = System.Drawing.Color.LightCyan;
+        }
+
+       
 
 
     }

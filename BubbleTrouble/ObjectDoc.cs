@@ -32,6 +32,11 @@ namespace BubbleTrouble
 
         public void Draw(Graphics g)
         {
+
+            foreach (Bullet bullet in bullets)
+            {
+                bullet.Draw(g);
+            }
             player1.Draw(g);
 
             foreach(Bubble bubble in bubbles)
@@ -39,10 +44,7 @@ namespace BubbleTrouble
                 bubble.Draw(g);
             }
 
-            foreach (Bullet bullet in bullets)
-            {
-                bullet.Draw(g);
-            }
+            
         }
 
         public void FireBullet()

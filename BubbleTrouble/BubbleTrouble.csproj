@@ -176,6 +176,54 @@
   <ItemGroup>
     <None Include="Resources\ricosound.mp3" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\281.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o4lsfuk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rbFRS6R.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ricosound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kowalskisound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\privatesound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rico_action.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skipper_action1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skipper_action2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\theme_song.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kowalski_action.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\private_action.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skippersound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\victory_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\victory_button1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\victorybckg.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

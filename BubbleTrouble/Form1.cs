@@ -21,7 +21,7 @@ namespace BubbleTrouble
         private int height;
         private Image slika;
         public int selected;
-        
+        private Image slika1;
 
         public Form1(int i)
         {
@@ -39,6 +39,30 @@ namespace BubbleTrouble
             selected = i;
             newGame(3,0,1);
             slika = Properties.Resources.gameoverr2;
+            slika1 = Properties.Resources.victorybckg;
+            if (i == 1)
+            {
+            button3.BackgroundImage = Properties.Resources.skipper_action1;
+            label3.Text = "SKIPPER";
+            }
+            else if(i==2)
+            {
+                label3.Text = "RICO";
+                button3.BackgroundImage = Properties.Resources.rico_action;
+            }
+            else if (i == 3)
+            {
+
+                label3.Text = "KOWALSKI";
+                button3.BackgroundImage = Properties.Resources.kowalski_action;
+            }
+            else {
+                label3.Text = "PRIVATE";
+                button3.BackgroundImage = Properties.Resources.private_action;
+            }
+
+            this.label3.Font = new Font("Verdana   ", 10, FontStyle.Bold);
+            label3.ForeColor = System.Drawing.Color.Orange;
 
             //this.progressBar1.FillStyle = ColorProgressBar.ColorProgressBar.FillStyles.Dashed;
             panel1.BorderStyle = BorderStyle.FixedSingle;
@@ -145,13 +169,30 @@ namespace BubbleTrouble
                // panel1.BorderStyle = BorderStyle.None;
               
             }
-            else{
-            e.Graphics.Clear(Color.White);
-            Brush brush = new SolidBrush(Color.DeepSkyBlue);
-            //Pen pen = new Pen(brush);
+            else if (objectDoc.level == 4)
+            {
+                e.Graphics.DrawImage(slika1, left, top, width, height);
+                button1.Show();
+                button2.Show();
+                
+             
+                label1.Text = "0";
 
-            e.Graphics.FillRectangle(brush, left, top, width, height);
-            objectDoc.Draw(e.Graphics);
+     
+               
+                
+                timer.Stop();
+
+
+            }
+            else
+            {
+                e.Graphics.Clear(Color.White);
+                Brush brush = new SolidBrush(Color.FromArgb(9,196,251));
+                //Pen pen = new Pen(brush);
+
+                e.Graphics.FillRectangle(brush, left, top, width, height);
+                objectDoc.Draw(e.Graphics);
             }
 
         }
@@ -190,6 +231,7 @@ namespace BubbleTrouble
             Program.OpenMainMenu = true;
             this.Close();
         }
+
 
       }
 }

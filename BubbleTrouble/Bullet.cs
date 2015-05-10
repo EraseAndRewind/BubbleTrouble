@@ -32,8 +32,10 @@ namespace BubbleTrouble
          
         public override void Draw(System.Drawing.Graphics g)
         {
-            Pen pen = new Pen(brush);
-            g.DrawLine(pen, currentPosition, endPoint);
+            //Pen pen = new Pen(brush);
+            Pen greenPen = new Pen(Color.GreenYellow, 5);
+            g.DrawLine(greenPen, currentPosition,endPoint);
+           // g.DrawLine(pen, currentPosition, endPoint);
         }
 
     }
