@@ -43,13 +43,13 @@ Bubble:
 
 Променливи од калсата:
 
-int radius - радиусот на балончето
-double angle - агол на движење
-dobule velocity - брзина на движење 
-dobule velocityX - брзина на движење po x (koja se пресметува so cos(agol) * velocity
-dobule velocityY - брзина на движење po Y (koja se пресметува so sin(agol) * velocity
-bool delete - ако променливата е true се брише балончето
-double dropRate - брзина на промена на аголот ( бидејки аголот секогаш се намалува кон 90 симулира брзина на опаѓање надолу)
+int radius - радиусот на балончето;
+double angle - агол на движење;
+dobule velocity - брзина на движење;
+dobule velocityX - брзина на движење po x (koja se пресметува so cos(agol) * velocity;
+dobule velocityY - брзина на движење po Y (koja se пресметува so sin(agol) * velocity;
+bool delete - ако променливата е true се брише балончето;
+double dropRate - брзина на промена на аголот ( бидејки аголот секогаш се намалува кон 90 симулира брзина на опаѓање надолу);
 
 Класата наследува од класата MovingObject.
 Конструкторот на класата: public Bubble(Point currentPosition, int radius, Color color, double angle, double dropRate)
