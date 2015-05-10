@@ -51,7 +51,7 @@ namespace BubbleTrouble
             // kowalski = false;
             selected = 1;
             Program.OpenDetailFormOnClose = true;
-            simpleSound = new SoundPlayer(@"C:\Users\Acer\Desktop\BubbleTrouble\BubbleTrouble\Resources\skippersound.wav");
+            simpleSound = new SoundPlayer(Properties.Resources.skippersound);
             simpleSound.Play();
             this.Close();
 
@@ -69,7 +69,7 @@ namespace BubbleTrouble
 
             selected = 2;
             Program.OpenDetailFormOnClose = true;
-            simpleSound = new SoundPlayer(@"C:\Users\Acer\Desktop\BubbleTrouble\BubbleTrouble\Resources\ricosound.wav");
+            simpleSound = new SoundPlayer(Properties.Resources.ricosound1);
             simpleSound.Play();
             this.Close();
         }
@@ -79,7 +79,7 @@ namespace BubbleTrouble
             selected = 3;
             Program.OpenDetailFormOnClose = true;
 
-            simpleSound = new SoundPlayer(@"C:\Users\Acer\Desktop\BubbleTrouble\BubbleTrouble\Resources\kowalskisound.wav");
+            simpleSound = new SoundPlayer(Properties.Resources.kowalskisound);
             simpleSound.Play();
 
             this.Close();
@@ -89,7 +89,7 @@ namespace BubbleTrouble
         {
             selected = 4;
             Program.OpenDetailFormOnClose = true;
-            simpleSound = new SoundPlayer(@"C:\Users\Acer\Desktop\BubbleTrouble\BubbleTrouble\Resources\privatesound.wav");
+            simpleSound = new SoundPlayer(Properties.Resources.privatesound);
             simpleSound.Play();
             this.Close();
 
