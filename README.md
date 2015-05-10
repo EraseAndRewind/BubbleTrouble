@@ -35,7 +35,7 @@ http://i.imgur.com/vW8tIP2.jpg
 
 GameOver Прозорецот:
 
-http://i.imgur.com/sLVbxMt.jpg
+http://i.imgur.com/XuQ7pOz.jpg
 
 Опис на една од Класите (класата Bubble):
 
