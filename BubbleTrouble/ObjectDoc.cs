@@ -50,23 +50,20 @@ namespace BubbleTrouble
             if(canFire)
             {
                 Bullet bullet = new Bullet(player1.currentPosition.X, player1.currentPosition.Y);
+
+
                 
                 bullets.Add(bullet);
                 canFire = false;
             }
         }
 
-        public void createPlayers(Player player)
+        public void createPlayers(Point currentPosition, int life, int selected)
         {
-            player1 = new Player(player.currentPosition, player.life);
+            player1 = new Player(currentPosition, life, selected);
         }
 
-        public void createPlayers(Player player, Player player2)
-        {
-            player1 = new Player(player.currentPosition, player.life);
-        }
-
-
+       
         public void spawnBubble(Bubble bubble)
         {
             bubbles.Add(bubble);

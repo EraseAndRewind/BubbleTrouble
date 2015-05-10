@@ -17,7 +17,8 @@ namespace BubbleTrouble
         private int velocityX;
         private Image img;
         
-       public Player(Point currentPosition, int life)
+        
+       public Player(Point currentPosition, int life, int selected)
        {
             this.currentPosition = new Point(currentPosition.X, currentPosition.Y);
             this.velocityX = 5;
@@ -25,9 +26,25 @@ namespace BubbleTrouble
             this.life = life;
             brush = new SolidBrush(Color.Blue);
             direction = DIRECTION.STILL;
-            img = Properties.Resources.penguinplayersmallercanavas1;
+
+           Console.WriteLine("selected pLayer is :" + selected);
+
+            if (selected == 1)
+            {
+                img = Properties.Resources.skipperPlayer;
+            }
+            else if (selected == 2)
+            {
+                img = Properties.Resources.ricoplayer;
+            }
+            else if (selected == 3)
+            {
+                img = Properties.Resources.kowalskiplayer;
+            }
+            else img = Properties.Resources.privateplayer;
+
             playerHeight = img.Height;
-            playerWidht = img.Width; 
+            playerWidht = img.Width;
             //playerHeight = 50;
             //playerWidht = 25;
        }
@@ -36,15 +53,14 @@ namespace BubbleTrouble
        {
            life--;
        }
-        override public void Draw(Graphics g)
-        {
-            Pen pen = new Pen(brush);
-           
-            g.DrawImage(img, currentPosition.X - img.Width / 2, currentPosition.Y - img.Height,
-               img.Width, img.Height);
-            //g.DrawRectangle(pen, currentPosition.X - playerWidht / 2, currentPosition.Y - playerHeight, playerWidht, playerHeight);
-        }
+       override public void Draw(Graphics g)
+       {
+           Pen pen = new Pen(brush);
 
+           g.DrawImage(img, currentPosition.X - img.Width / 2, currentPosition.Y - img.Height,
+              img.Width, img.Height);
+           //g.DrawRectangle(pen, currentPosition.X - playerWidht / 2, currentPosition.Y - playerHeight, playerWidht, playerHeight);
+       }
         public void changeDirection(DIRECTION direction)
         {
             this.direction = direction;

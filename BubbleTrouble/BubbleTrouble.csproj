@@ -63,6 +63,12 @@
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectCharacter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectCharacter.Designer.cs">
+      <DependentUpon>SelectCharacter.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,6 +85,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SelectCharacter.resx">
+      <DependentUpon>SelectCharacter.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -100,6 +109,72 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btn1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\los-pinguinos-de-madagascar_029.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\penguinsproba.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tumblr_nf9cd41Ihd1tcw4lfo1_1280.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\octopus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\penguins-of-madagascar-2014-logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\private-skipper-kowalski-rico-penguins-of-madagascar-4096x2304.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gameover1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gameover2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\isthisgood.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gameoverr2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\private.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rico.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skipper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kowalski.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bckg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kowalskiplayer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\privateplayer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ricoplayer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skipperPlayer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kowalskisound.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\privatesound.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ricosound.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
